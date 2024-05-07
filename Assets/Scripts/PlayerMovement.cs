@@ -9,18 +9,29 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D coll;
     private Animator anim;
     Transform selftranform;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private LayerMask jumpableGround;
     private SpriteRenderer sprite;
     private float moveX;
-    [SerializeField]private float jumpForce = 7f;
+
     private float moveSpeed = 5f;
     public float hangTime = .2f;
     private float hangCounter;
-
     public float JumpBufferLength = .5f;
     private float JumpBufferCount;
-    
+    private bool isFacingRight = true;
+    private bool isWallSliding;
+    private float wallSlidingSpeed=2f;
+    private bool isWallJumping;
+    private float wallJumpingDirection;
+    private float wallJumpingTime = 0.2f;
+    private float wallJumpingCounter;
+    private float wallJumpingDuration = 0.4f;
+    private Vector2 wallJumpingPower = new Vector2(8f, 16f);
+
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private LayerMask jumpableGround;
+    [SerializeField]private float jumpForce = 7f;
     //public ParticleSystem footsteps;
     //private ParticleSystem.EmissionModule footEmission;
     //public ParticleSystem ImpactEffect;
@@ -44,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
         // It's work on unity input Manager 
         moveX = Input.GetAxisRaw("Horizontal"); //if we don't want to slide so then we use raw
         rbody.velocity = new Vector2(moveX * moveSpeed, rbody.velocity.y);
@@ -83,6 +93,12 @@ public class PlayerMovement : MonoBehaviour
         }
         wasOnGround = IsGrounded();
         UpdateAnimation();
+        wallSlide();
+        WallJump();
+        if (!isWallJumping)
+        {
+            Flip();
+        }
     }
 
     private void UpdateAnimation()
@@ -93,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
             //move Right
             state = MovementState.runing;
             // sprite.flipX = false;
-            selftranform.rotation = new Quaternion(0, 0, 0, 0);
+            //selftranform.rotation = new Quaternion(0, 0, 0, 0);
             //CreatDust();
         }
         else if (moveX < 0f)
@@ -101,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
             //move Left
             state = MovementState.runing;
             //sprite.flipX = true;
-            selftranform.rotation = new Quaternion(0, -180, 0, 0);
+            //selftranform.rotation = new Quaternion(0, -180, 0, 0);
             //Dust.Play();
         }
         else
@@ -118,6 +134,24 @@ public class PlayerMovement : MonoBehaviour
         }
         anim.SetInteger("state", (int)state);
     }
+
+    private bool IsWalled(){
+        return Physics2D.OverlapCircle(wallCheck.position,0.2f,wallLayer);
+    }
+
+    private void wallSlide(){
+        if(IsWalled() && !IsGrounded() && moveX !=0f)
+        {
+            isWallSliding=true;
+            rbody.velocity = new Vector2(rbody.velocity.x ,Mathf.Clamp(rbody.velocity.y,-wallSlidingSpeed,float.MaxValue));
+            
+        }
+        else
+        {
+            isWallSliding=false;
+        }
+
+    }
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
@@ -127,6 +161,52 @@ public class PlayerMovement : MonoBehaviour
         selftranform.position = spawnPoint.position;
 
     }
+
+    private void WallJump()
+    {
+        if (isWallSliding)
+        {
+            isWallJumping = false;
+            wallJumpingDirection = -transform.localScale.x;
+            wallJumpingCounter = wallJumpingTime;
+            CancelInvoke(nameof(StopWallJumping));
+        }
+        else
+        {
+            wallJumpingCounter -= Time.deltaTime;
+        }
+        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
+        {
+            isWallJumping = true;
+            rbody.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
+            wallJumpingCounter = 0f;
+
+            if (transform.localScale.x != wallJumpingDirection)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
+
+            Invoke(nameof(StopWallJumping), wallJumpingDuration);
+        }
+    }
+    private void StopWallJumping()
+    {
+        isWallJumping = false;
+    }
+private void Flip()
+    {
+        if (isFacingRight && moveX < 0f || !isFacingRight && moveX > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+    }
+}
     /*
     public void OnCollisionEnter2D(Collision2D collide)
     {
@@ -136,4 +216,3 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     */
-}
