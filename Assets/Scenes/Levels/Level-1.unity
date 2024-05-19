@@ -121812,9 +121812,35 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 914525249}
+    m_ColliderPaths:
+    - - X: 390000000
+        Y: 90000000
+      - X: 380000000
+        Y: 90000000
+      - X: 380000000
+        Y: 0
+      - X: 390000000
+        Y: 0
+    - - X: 440000000
+        Y: 90000000
+      - X: 430000000
+        Y: 90000000
+      - X: 430000000
+        Y: 0
+      - X: 440000000
+        Y: 0
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 43.999973, y: 0}
+      - {x: 43.999973, y: 9}
+      - {x: 43, y: 8.99997}
+      - {x: 43.00003, y: 0}
+    - - {x: 38.999973, y: 0}
+      - {x: 38.999973, y: 9}
+      - {x: 38, y: 8.99997}
+      - {x: 38.00003, y: 0}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -121827,7 +121853,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914525245}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -121835,7 +121861,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 886f74b2dad732a4290b069268a09b7f, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -121877,7 +121903,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -123824,7 +123850,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -123865,9 +123891,59 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1737611250}
+    m_ColliderPaths:
+    - - X: 370000000
+        Y: -10000000
+      - X: 250000000
+        Y: -10000000
+      - X: 250000000
+        Y: -20000000
+      - X: 370000000
+        Y: -20000000
+    - - X: 460000000
+        Y: -20000000
+      - X: 420000000
+        Y: -20000000
+      - X: 420000000
+        Y: -30000000
+      - X: 460000000
+        Y: -30000000
+    - - X: 560000000
+        Y: -30000000
+      - X: 460000000
+        Y: -30000000
+      - X: 460000000
+        Y: -40000000
+      - X: 560000000
+        Y: -40000000
+    - - X: 240000000
+        Y: -40000000
+      - X: -100000000
+        Y: -40000000
+      - X: -100000000
+        Y: -50000000
+      - X: 240000000
+        Y: -50000000
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 36.999973, y: -2}
+      - {x: 36.999973, y: -1}
+      - {x: 25, y: -1.0000293}
+      - {x: 25.000029, y: -2}
+    - - {x: 45.999973, y: -3}
+      - {x: 45.999973, y: -2}
+      - {x: 42, y: -2.0000293}
+      - {x: 42.00003, y: -3}
+    - - {x: 55.99997, y: -4}
+      - {x: 55.99997, y: -3}
+      - {x: 46, y: -3.0000293}
+      - {x: 46.00003, y: -4}
+    - - {x: 23.999971, y: -5}
+      - {x: 23.999971, y: -4}
+      - {x: -10, y: -4.000029}
+      - {x: -9.99997, y: -5}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -123880,7 +123956,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737611244}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -124167,7 +124243,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3.2
-  m_Material: {fileID: 6200000, guid: 886f74b2dad732a4290b069268a09b7f, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
