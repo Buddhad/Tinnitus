@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
-    [SerializeField] private Transform spawnPoint;
+    //[SerializeField] private Transform spawnPoint;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField]private float jumpForce = 7f;
     //public ParticleSystem footsteps;
@@ -156,12 +156,13 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
+    /*
     void SpawnPlayerOnPoint()
     {
         selftranform.position = spawnPoint.position;
 
     }
-
+*/
     private void WallJump()
     {
         if (isWallSliding)

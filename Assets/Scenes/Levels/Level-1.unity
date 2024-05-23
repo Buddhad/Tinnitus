@@ -105980,7 +105980,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.03772223, y: -0.31681693}
@@ -124106,6 +124106,7 @@ GameObject:
   - component: {fileID: 1827767254}
   - component: {fileID: 1827767255}
   - component: {fileID: 1827767256}
+  - component: {fileID: 1827767257}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -124293,7 +124294,6 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 192
-  spawnPoint: {fileID: 317698853}
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
@@ -124305,9 +124305,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827767249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a2f828bcf8da7e488d52decffb1cdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1827767257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827767249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f161ea3eec6b14298713525f39777c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1940284706
