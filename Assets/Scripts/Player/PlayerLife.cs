@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
-{
-    Vector2 startPos;
+{    
+    Vector2 CheckPointPos;
     SpriteRenderer sr;
 
     private void Awake() {
     sr=GetComponent<SpriteRenderer>();
+    
 }
     private void Start() {
-        startPos=transform.position;
+        CheckPointPos=transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -21,13 +22,16 @@ public class PlayerLife : MonoBehaviour
     }
 
     void Die(){
-        StartCoroutine(Respawn(0.5f));
+        StartCoroutine(Respawn(0.3f));
     }
 
+    public void UpdateCheckpoint(Vector2 pos){
+        CheckPointPos=pos;
+    }
     IEnumerator Respawn(float duration){
         sr.enabled=false;
         yield return new WaitForSeconds(duration);
-        transform.position=startPos;
+        transform.position=CheckPointPos;
         sr.enabled=true;
     }
     

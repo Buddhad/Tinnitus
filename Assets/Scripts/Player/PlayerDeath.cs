@@ -23,8 +23,5 @@ public class PlayerDeath : MonoBehaviour
         rbody.bodyType=RigidbodyType2D.Static;
     }
 
-    private void RestartLevel(){
-        
-    }
 
 }
