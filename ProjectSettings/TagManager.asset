@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trap
   - CheckPoint
+  - Coin
   layers:
   - Default
   - TransparentFX

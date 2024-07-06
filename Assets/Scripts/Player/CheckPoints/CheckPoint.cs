@@ -9,6 +9,7 @@ public class CheckPoint : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Sprite passive, active;
     private BoxCollider2D CheckPointCollider;
+    [SerializeField] private AudioSource CheckPointSound;
 
     private void Awake(){
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
@@ -17,8 +18,8 @@ public class CheckPoint : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-
         if(other.CompareTag("Player")){
+            CheckPointSound.Play();
             playerLife.UpdateCheckpoint(RespawnPoint.position);
             spriteRenderer.sprite=active;
             CheckPointCollider.enabled=false;

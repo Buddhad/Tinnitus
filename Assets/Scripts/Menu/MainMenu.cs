@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]GameObject quitDialog;
     public void PlayGame(){
         SceneManager.LoadScene("Level-1");
     }
 
     public void QuitGame()
     {
-        Application.Quit();
-        Debug.Log("Quit Check!!");
+        quitDialog.SetActive(true);
     }
 
     public void LevelScene()
@@ -29,6 +29,13 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Music Check!!");
     }
 
+public void YesExit(){
+        Application.Quit();
+        Debug.Log("Quit Check!!");
+}
+public void NoExit(){
+    quitDialog.SetActive(false);
+}
 
 
 }
