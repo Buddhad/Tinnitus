@@ -19,14 +19,15 @@ public class MoveNextLvl : MonoBehaviour
             if(SceneManager.GetActiveScene().buildIndex==11)
             {
                 Debug.Log("You Win!!");
+                
             }
             else
             {
             //move to next level
+            AudioManager.Instance.PlaySFX("Win");
             SceneManager.LoadScene(nextSceneLoad);
             //setting int for index
             if(nextSceneLoad>PlayerPrefs.GetInt("levelAt")){
-                
                 PlayerPrefs.SetInt("levelAt",nextSceneLoad);
                 }
             }

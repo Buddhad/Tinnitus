@@ -6,7 +6,7 @@ public class PlayerLife : MonoBehaviour
 {    
     Vector2 CheckPointPos;
     SpriteRenderer sr;
-    [SerializeField] private AudioSource DieSound;
+    //[SerializeField] private AudioSource DieSound;
 
     private void Awake() {
     sr=GetComponent<SpriteRenderer>();
@@ -23,7 +23,8 @@ public class PlayerLife : MonoBehaviour
     }
 
     void Die(){
-        DieSound.Play();
+        //DieSound.Play();
+        AudioManager.Instance.PlaySFX("Death");
         StartCoroutine(Respawn(0.3f));
     }
 

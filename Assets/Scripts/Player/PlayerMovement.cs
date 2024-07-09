@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private bool wasOnGround;
 
     private enum MovementState { idel, jump, runing, falling}
-    [SerializeField] private AudioSource jumpSoundEffect;
+    //[SerializeField] private AudioSource jumpSoundEffect;
 
     // Start is called before the first frame update
     private void Start()
@@ -81,7 +81,8 @@ public class PlayerMovement : MonoBehaviour
         //Jump In the air
         if (JumpBufferCount >= 0 && hangCounter > 0f)
         {
-            jumpSoundEffect.Play();
+            //jumpSoundEffect.Play();
+            AudioManager.Instance.PlaySFX("Jump");
             rbody.velocity = new Vector2(rbody.velocity.x, jumpForce);
             JumpBufferCount = 0;
             //CreatDust();
@@ -91,7 +92,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump") && rbody.velocity.y > 0)
         {
             rbody.velocity = new Vector2(rbody.velocity.x, rbody.velocity.y * .5f);
-            jumpSoundEffect.Play();
+            //jumpSoundEffect.Play();
+            AudioManager.Instance.PlaySFX("Jump");
         }
         wasOnGround = IsGrounded();
         UpdateAnimation();
