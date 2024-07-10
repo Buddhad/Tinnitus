@@ -574,18 +574,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 79210297698511610}
-        m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
-        m_MethodName: ToggleMusic
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
@@ -1960,18 +1948,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 79210297698511610}
-        m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
-        m_MethodName: ToggleSFX
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
@@ -2759,16 +2735,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 5557133880956552556}
   m_HandleRect: {fileID: 6982841958689441863}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 79210297698511610}
-        m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
-        m_MethodName: SFXVolume
+      - m_Target: {fileID: 7516276799468424376}
+        m_TargetAssemblyTypeName: VolumeController, Assembly-CSharp
+        m_MethodName: SetSFXVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3183,8 +3159,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2342807352076624810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3553,7 +3529,7 @@ GameObject:
   - component: {fileID: 6042627717198006433}
   - component: {fileID: 3888696815700449454}
   - component: {fileID: 2134151743074502113}
-  - component: {fileID: 79210297698511610}
+  - component: {fileID: 7516276799468424376}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3649,7 +3625,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &79210297698511610
+--- !u!114 &7516276799468424376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3658,11 +3634,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6233347353676183048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 829dbf170ca8f6b42b007d4f85e65561, type: 3}
+  m_Script: {fileID: 11500000, guid: b42d73651035f424c90ef75d93638bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicSlider: {fileID: 7768417879792333599}
-  _sfxSlider: {fileID: 9031568164269158268}
+  audioMixer: {fileID: 24100000, guid: ac136813f90b2924bb10002580cbf58e, type: 2}
+  musicSlider: {fileID: 7768417879792333599}
+  sfxSlider: {fileID: 9031568164269158268}
 --- !u!1 &6242427051826362298
 GameObject:
   m_ObjectHideFlags: 0
@@ -3735,7 +3712,7 @@ RectTransform:
   m_Father: {fileID: 9120618865664074574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4016,16 +3993,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 2504566118091832489}
   m_HandleRect: {fileID: 8595388953767424406}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 79210297698511610}
-        m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
-        m_MethodName: MusicVolume
+      - m_Target: {fileID: 7516276799468424376}
+        m_TargetAssemblyTypeName: VolumeController, Assembly-CSharp
+        m_MethodName: SetMusicVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4323,8 +4300,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4315702417381002413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4552,7 +4529,7 @@ RectTransform:
   m_Father: {fileID: 7541603696247279419}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
