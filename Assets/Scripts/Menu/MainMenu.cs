@@ -31,7 +31,6 @@ public class MainMenu : MonoBehaviour
 
 public void YesExit(){
         Application.Quit();
-        Debug.Log("Quit Check!!");
 }
 public void NoExit(){
     quitDialog.SetActive(false);

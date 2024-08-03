@@ -18,8 +18,7 @@ public class MoveNextLvl : MonoBehaviour
             //Last Level of the game
             if(SceneManager.GetActiveScene().buildIndex==11)
             {
-                Debug.Log("You Win!!");
-                
+                SceneManager.LoadScene("GameComplete");
             }
             else
             {

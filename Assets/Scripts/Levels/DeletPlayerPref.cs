@@ -5,9 +5,14 @@ using UnityEngine;
 public class DeletPlayerPref : MonoBehaviour
 {
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.L)){
+        // if(Input.GetKeyDown(KeyCode.L)){
             
-            PlayerPrefs.DeleteAll();
-        }
+        //     PlayerPrefs.DeleteAll();
+        // }
     }
+
+    public void ResetLevel(){
+        Debug.Log("Delete level log!!");
+        PlayerPrefs.DeleteAll();
+    } 
 }

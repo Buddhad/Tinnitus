@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bouncepad : MonoBehaviour
 {
-    private float bounce=16f;
+    [SerializeField]private float bounce=10f;
 
     private void OnCollisionEnter2D(Collision2D other) {
         

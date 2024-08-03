@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    InputSystem controls;
     //public ParticleSystem Dust;
     private Rigidbody2D rbody;
     private BoxCollider2D coll;
     private Animator anim;
-    Transform selftranform;
-    private SpriteRenderer sprite;
+    //Transform selftranform;
+    //private SpriteRenderer sprite;
     private float moveX;
 
     private float moveSpeed = 5f;
     public float hangTime = .2f;
     private float hangCounter;
-    public float JumpBufferLength = .5f;
+    public float JumpBufferLength =.5f;
     private float JumpBufferCount;
     private bool isFacingRight = true;
     private bool isWallSliding;
@@ -28,6 +29,12 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingDuration = 0.4f;
     private Vector2 wallJumpingPower = new Vector2(8f, 16f);
 
+    public float KBForce=2f;
+    public float KBCounter=0f;
+    public float KBTotalTime=0.2f;
+    public bool KnockBackFormRight;
+
+
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
     //[SerializeField] private Transform spawnPoint;
@@ -38,8 +45,18 @@ public class PlayerMovement : MonoBehaviour
     //public ParticleSystem ImpactEffect;
     private bool wasOnGround;
 
+
     private enum MovementState { idel, jump, runing, falling}
-    //[SerializeField] private AudioSource jumpSoundEffect;
+
+    private void Awake() {
+        controls= new InputSystem();
+        controls.Enable();
+        controls.Land.Movement.performed+=ctx=>
+        {
+            moveX=ctx.ReadValue<float>();
+        };
+        controls.Land.Jump.performed+=ctx=>Jump();
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -47,18 +64,32 @@ public class PlayerMovement : MonoBehaviour
 
         anim = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        //sprite = GetComponent<SpriteRenderer>();
         rbody = GetComponent<Rigidbody2D>();
-        selftranform = transform;
+        //selftranform = transform;
+
         //footEmission = footsteps.emission;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        // It's work on unity input Manager 
-        moveX = Input.GetAxisRaw("Horizontal"); //if we don't want to slide so then we use raw
+
+        if(KBCounter<=0){
+            // It's work on unity input Manager 
+        //moveX = Input.GetAxisRaw("Horizontal"); //if we don't want to slide so then we use raw
         rbody.velocity = new Vector2(moveX * moveSpeed, rbody.velocity.y);
+        }else{
+            if(KnockBackFormRight==true){
+                rbody.velocity = new Vector2(-KBForce,KBForce);
+            }
+            if(KnockBackFormRight==false){
+                rbody.velocity = new Vector2(KBForce,KBForce);
+            }
+                KBCounter-=Time.deltaTime;
+        }
+        
+
         //manage HangTime
         if (IsGrounded())
         {
@@ -156,6 +187,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    void Jump(){
+        if(IsGrounded()){
+            rbody.velocity= new Vector2(rbody.velocity.x, jumpForce);
+        }
+    }
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
@@ -167,6 +204,12 @@ public class PlayerMovement : MonoBehaviour
 
     }
 */
+private void OnEnable() {
+    controls.Enable();
+}
+private void OnDisable() {
+    controls.Disable();
+}
     private void WallJump()
     {
         if (isWallSliding)

@@ -16,7 +16,6 @@ public class ItemCollector : MonoBehaviour
             CoinsText.text=""+_coins;
             //CoinCollectSound.Play();
             AudioManager.Instance.PlaySFX("Coin");
-            
         }
     }
 }

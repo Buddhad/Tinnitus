@@ -7,8 +7,8 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    public Sound[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
+    public Sound[] musicSounds, sfxSounds,masterSound;
+    public AudioSource musicSource, sfxSource,masterSource;
 
     private void Awake() {
         if(Instance==null){
@@ -49,13 +49,27 @@ public class AudioManager : MonoBehaviour
                 sfxSource.PlayOneShot(s.audioClip);
             }
         }
+    public void PlayMaster(string name)
+    {
+        Sound s = Array.Find(masterSound, x => x.name == name);
+            if (s == null)
+            {
+                Debug.Log("Master Not Found");
+            }
+            else
+            {
+                masterSource.PlayOneShot(s.audioClip);
+            }
+        }
 
     public void ToggleMusic(){
     musicSource.mute=!musicSource.mute;
     }
-
     public void ToggleSFX(){
         sfxSource.mute=!sfxSource.mute;
+    }
+    public void ToggleMaster(){
+        masterSource.mute=!masterSource.mute;
     }
 
     public void MusicVolume(float volume){
@@ -63,6 +77,9 @@ public class AudioManager : MonoBehaviour
     }
     public void SFXVolume(float sfxvolume){
         sfxSource.volume=sfxvolume;
+    }
+    public void MasterVolume(float masterVolume){
+        masterSource.volume=masterVolume;
     }
 
 
