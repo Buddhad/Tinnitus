@@ -103,6 +103,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Menu",
+            "id": "08f80f82-f4b1-45ec-b1c9-8c96eda01903",
+            "actions": [
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "0b510cbc-e9be-4f7a-874d-b4fdadea3f64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "52baae1b-9d8a-4116-ba0d-cc7236d338b2",
+                    "path": "<XInputController>/dpad/down",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

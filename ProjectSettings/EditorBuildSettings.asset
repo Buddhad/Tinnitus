@@ -6,42 +6,45 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/_Scenes/MainMenu.unity
     guid: c64fba9c1000cdf48832f144535177ef
   - enabled: 1
-    path: Assets/Scenes/LevelSelection.unity
+    path: Assets/_Scenes/LevelSelection.unity
     guid: ca24f853d5a169b4b8257214480f2120
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-1.unity
+    path: Assets/_Scenes/Levels/Demo.unity
+    guid: c89c6533e43338e4fa782e008d8db763
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Level-1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-2.unity
+    path: Assets/_Scenes/Levels/Level-2.unity
     guid: 43b78c84fddfdd743b88ee83555bfcb0
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-3.unity
+    path: Assets/_Scenes/Levels/Level-3.unity
     guid: cd14b6bbbae7458439b3ca1c2cfd45e7
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-4.unity
+    path: Assets/_Scenes/Levels/Level-4.unity
     guid: 0a6e2636e54c4f844b45506f61e9b17f
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-5.unity
+    path: Assets/_Scenes/Levels/Level-5.unity
     guid: d307762d2724caf4b82983099dae7410
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-6.unity
+    path: Assets/_Scenes/Levels/Level-6.unity
     guid: 3557b213ce0e3f748b6adf8ad70aea94
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-7.unity
+    path: Assets/_Scenes/Levels/Level-7.unity
     guid: 67c7eb4d0a760d948a5c1fd564774419
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-8.unity
+    path: Assets/_Scenes/Levels/Level-8.unity
     guid: b01a0bb5aba07314c862a9a37df3dbf8
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-9.unity
+    path: Assets/_Scenes/Levels/Level-9.unity
     guid: 43b06425cc0e4ad469fd29e19128b07f
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-10.unity
+    path: Assets/_Scenes/Levels/Level-10.unity
     guid: b859fd2bbe619294fa92054e7b35c8a7
   - enabled: 1
-    path: Assets/Scenes/GameComplete.unity
+    path: Assets/_Scenes/GameComplete.unity
     guid: 3c9ee08954bd2944180d1c1fbaf7842f
   m_configObjects: {}
