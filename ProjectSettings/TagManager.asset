@@ -8,6 +8,8 @@ TagManager:
   - CheckPoint
   - Coin
   - Weak Point
+  - Key
+  - Apple
   layers:
   - Default
   - TransparentFX

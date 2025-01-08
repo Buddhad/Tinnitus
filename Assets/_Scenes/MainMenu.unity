@@ -5192,6 +5192,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: b750c59970990fb4088f1cc75ce64d02, type: 3}
   - name: Checkpoint
     audioClip: {fileID: 8300000, guid: 5ecce4f72fb91be4b94fd8c4ebca0819, type: 3}
+  - name: Chest
+    audioClip: {fileID: 8300000, guid: 75706f03ee6cbeb4a9e45087ae486102, type: 3}
+  - name: Key
+    audioClip: {fileID: 8300000, guid: 9153cba39092d564fbd35d18e36f503f, type: 3}
   masterSound:
   - name: BGM
     audioClip: {fileID: 8300000, guid: 8a23ece36e132fa4aa3a9bfaaa7c3a23, type: 3}

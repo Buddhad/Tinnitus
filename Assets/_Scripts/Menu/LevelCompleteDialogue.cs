@@ -11,6 +11,7 @@ public class LevelCompleteDialogue : MonoBehaviour
         {
             WinPopupDialogue.SetActive(true);
             Time.timeScale=0;
+            AudioManager.Instance.PlaySFX("Win");
         }
     }
 }

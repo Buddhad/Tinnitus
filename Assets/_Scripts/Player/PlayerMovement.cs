@@ -43,10 +43,6 @@ public class PlayerMovement : MonoBehaviour
     public float KBTotalTime=0.2f;
     public bool KnockBackFormRight;
 
-    
-    //public ParticleSystem footsteps;
-    //private ParticleSystem.EmissionModule footEmission;
-    //public ParticleSystem ImpactEffect;
     private bool wasOnGround;
 
 
@@ -65,14 +61,11 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
         anim = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();
         //sprite = GetComponent<SpriteRenderer>();
         rbody = GetComponent<Rigidbody2D>();
         //selftranform = transform;
-
-        //footEmission = footsteps.emission;
     }
 
     // Update is called once per frame
@@ -94,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
                 KBCounter-=Time.deltaTime;
         }
         
-
         //manage HangTime
         if (IsGrounded())
         {
@@ -104,11 +96,11 @@ public class PlayerMovement : MonoBehaviour
         {
             hangCounter -= Time.deltaTime;
         }
-
         //manage JumpBuffer
         if (Input.GetButtonDown("Jump"))
         {
             JumpBufferCount = JumpBufferLength;
+            CreatDust();
         }
         else
         {
@@ -121,17 +113,13 @@ public class PlayerMovement : MonoBehaviour
             AudioManager.Instance.PlaySFX("Jump");
             rbody.velocity = new Vector2(rbody.velocity.x, jumpForce);
             JumpBufferCount = 0;
-            CreatDust();
-
         }
         //Small Jump
         //if (Input.GetButtonUp("Jump") && rbody.velocity.y > 0)
         if (Input.GetButtonUp("Jump") && rbody.velocity.y > 0)
         {
             rbody.velocity = new Vector2(rbody.velocity.x, rbody.velocity.y * .5f);
-            //jumpSoundEffect.Play();
             AudioManager.Instance.PlaySFX("Jump");
-            CreatDust();
         }
         wasOnGround = IsGrounded();
         UpdateAnimation();
@@ -152,7 +140,6 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.runing;
             // sprite.flipX = false;
             //selftranform.rotation = new Quaternion(0, 0, 0, 0);
-            //CreatDust();
         }
         else if (moveX < 0f)
         {
@@ -160,7 +147,6 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.runing;
             //sprite.flipX = true;
             //selftranform.rotation = new Quaternion(0, -180, 0, 0);
-            //Dust.Play();
         }
         else
         {
@@ -185,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
         if(IsWalled() && !IsGrounded() && moveX !=0f)
         {
             isWallSliding=true;
-            CreatDust();
+            //CreatDust();
             rbody.velocity = new Vector2(rbody.velocity.x ,Mathf.Clamp(rbody.velocity.y,-wallSlidingSpeed,float.MaxValue));
             
         }
@@ -197,30 +183,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        CreatDust();
+        
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
-    /*
-    void SpawnPlayerOnPoint()
-    {
-        selftranform.position = spawnPoint.position;
 
-    }
-*/
-/*
-private void OnEnable() {
-    controls.Enable();
-}
-private void OnDisable() {
-    controls.Disable();
-}
-
-void Jump(){
-        if(IsGrounded()){
-            rbody.velocity= new Vector2(rbody.velocity.x, jumpForce);
-        }
-    }
-*/
     private void WallJump()
     {
         if (isWallSliding)
@@ -247,9 +213,7 @@ void Jump(){
                 Vector3 localScale = transform.localScale;
                 localScale.x = -1f;
                 transform.localScale = localScale;
-
             }
-
             Invoke(nameof(StopWallJumping), wallJumpingDuration);
         }
     }
@@ -261,11 +225,14 @@ private void Flip()
     {
         if (isFacingRight && moveX < 0f || !isFacingRight && moveX > 0f)
         {
-            CreatDust();
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            //if player is in ground than create dust effect
+            if(IsGrounded()){
+                CreatDust();
+            }
         }
     }
 
@@ -273,12 +240,3 @@ private void Flip()
         dust.Play();
     }
 }
-    /*
-    public void OnCollisionEnter2D(Collision2D collide)
-    {
-        if (collide.gameObject.tag == TagTracker.killTriggerTag)
-        {
-            SpawnPlayerOnPoint();
-        }
-    }
-    */
